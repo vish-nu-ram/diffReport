@@ -4,7 +4,7 @@ import fuzzyCompare
 import pandas as pd
 
 
-def diffReport(path_file_a, path_file_b, path_file_output = 'Output/diffReport.html', output_file=True):
+def diffReport(path_file_a, path_file_b, path_file_output='Output/diffReport.html', output_file=True):
     text_extract_a = pdfparser(path_file_a)
     text_extract_b = pdfparser(path_file_b)
 
@@ -28,33 +28,38 @@ def diffReport(path_file_a, path_file_b, path_file_output = 'Output/diffReport.h
     df.reset_index(drop=True)
 
     # path_file_output
-    diff_report = open(path_file_output, 'w')
-    diff_report.write("<html>\n")
-    diff_report.close()
+    if output_file:
+        diff_report = open(path_file_output, 'w')
+        diff_report.write("<html>\n")
+        diff_report.close()
 
-    iterreport = open("Output/DfIter.html", 'a')
-    iterreport.write('<head>\n<link rel="stylesheet" href="table.css"></head>')
-    iterreport.write("<body>")
-    iterreport.write('<table class="blue" border = 1>\n')
-    iterreport.write("<tbody>\n")
-    iterreport.write('\t<tr style = "background-color : #1ABC9C">\n')
-    iterreport.write(f'\t\t<th>Line Number</th>\n')
-    iterreport.write(f'\t\t<td>File 1</td>\n')
-    iterreport.write(f'\t\t<td>File 2</td>\n')
-    iterreport.write(f'\t\t<td>Ratio</td>\n')
-    iterreport.write("\t</tr>\n")
-    for index, row in df.iterrows():
-        if index == 11:
-            row["File1"] = f'{row["File1"][:5]}<mark>{row["File1"][5:10]}</mark>{row["File1"][10:]}'
-        iterreport.write("\t<tr>\n")
-        iterreport.write(f'\t\t<th>{index}</th>\n')
-        iterreport.write(f'\t\t<td>{str(row["File1"]).strip()}</td>\n')
-        iterreport.write(f'\t\t<td>{str(row["File2"]).strip()}</td>\n')
-        iterreport.write(f'\t\t<td>{str(row["Ratio"]).strip()}</td>\n')
+        iterreport = open("Output/DfIter.html", 'a')
+        iterreport.write('<head>\n<link rel="stylesheet" href="table.css"></head>')
+        iterreport.write("<body>")
+        iterreport.write('<table class="blue" border = 1>\n')
+        iterreport.write("<tbody>\n")
+        iterreport.write('\t<tr style = "background-color : #1ABC9C">\n')
+        iterreport.write(f'\t\t<th>Line Number</th>\n')
+        iterreport.write(f'\t\t<td>File 1</td>\n')
+        iterreport.write(f'\t\t<td>File 2</td>\n')
+        iterreport.write(f'\t\t<td>Ratio</td>\n')
         iterreport.write("\t</tr>\n")
-    iterreport.write("</tbody>\n")
-    iterreport.write("</table>\n")
-    iterreport.write("</body>")
-    iterreport.write("</html>\n")
-    iterreport.close()
+        for index, row in df.iterrows():
+            if index == 11:
+                row["File1"] = f'{row["File1"][:5]}<mark>{row["File1"][5:10]}</mark>{row["File1"][10:]}'
+            iterreport.write("\t<tr>\n")
+            iterreport.write(f'\t\t<th>{index}</th>\n')
+            iterreport.write(f'\t\t<td>{str(row["File1"]).strip()}</td>\n')
+            iterreport.write(f'\t\t<td>{str(row["File2"]).strip()}</td>\n')
+            iterreport.write(f'\t\t<td>{str(row["Ratio"]).strip()}</td>\n')
+            iterreport.write("\t</tr>\n")
+        iterreport.write("</tbody>\n")
+        iterreport.write("</table>\n")
+        iterreport.write("</body>")
+        iterreport.write("</html>\n")
+        iterreport.close()
+
+
+if __name__ == '__main__':
+    diffReport("Example/Input/Input.pdf", "Example/Input/Input1.pdf", "Example/Output/DiffReport.html",output_file=True)
 

@@ -1,4 +1,5 @@
 import difflib
+from markUp import markUpDifferences
 from pdfParser import pdfparser
 import fuzzyCompare
 import pandas as pd
@@ -23,7 +24,8 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file
     for (i, j) in zip(text_lines_a, text_lines_b):
         res = fuzzyCompare.ratio(i, j, "partialTokenSortRatio")
         if res < 100:
-            df.loc[count] = [i, j, res]
+            a,b = markUpDifferences(i,j)
+            df.loc[count] = [a, b, res]
         count += 1
     df.reset_index(drop=True)
 
@@ -51,8 +53,6 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file
         iterreport.write(f'\t\t<td>Ratio</td>\n')
         iterreport.write("\t</tr>\n")
         for index, row in df.iterrows():
-            if index == 11:
-                row["File1"] = f'{row["File1"][:5]}<mark>{row["File1"][5:10]}</mark>{row["File1"][10:]}'
             iterreport.write("\t<tr>\n")
             iterreport.write(f'\t\t<th>{index}</th>\n')
             iterreport.write(f'\t\t<td>{str(row["File1"]).strip()}</td>\n')
@@ -67,5 +67,5 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file
 
 
 if __name__ == '__main__':
-    diffReport("Example/Input/SampleInput1.pdf", "Example/Input/SampleInput2.pdf", 
+    diffReport("Example/Input/SampleInput1.pdf", "Example/Input/SampleInput2.pdf",
                output_file=True)

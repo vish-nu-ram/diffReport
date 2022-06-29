@@ -4,7 +4,7 @@ import fuzzyCompare
 import pandas as pd
 
 
-def diffReport(path_file_a, path_file_b, path_file_output='Output/diffReport.html', output_file=True):
+def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file=True):
     text_extract_a = pdfparser(path_file_a)
     text_extract_b = pdfparser(path_file_b)
 
@@ -29,11 +29,17 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/diffReport.htm
 
     # path_file_output
     if output_file:
-        diff_report = open(path_file_output, 'w')
+        diff_report = open(path_file_output + "diffReport.html", 'w')
         diff_report.write("<html>\n")
         diff_report.close()
 
-        iterreport = open("Output/DfIter.html", 'a')
+        css_file = open("Resources/table.css", 'r')
+        css = css_file.read()
+        css_file.close()
+        css_file = open(path_file_output + "table.css", 'w')
+        css_file.write(css)
+
+        iterreport = open(path_file_output + "diffReport.html", 'a')
         iterreport.write('<head>\n<link rel="stylesheet" href="table.css"></head>')
         iterreport.write("<body>")
         iterreport.write('<table class="blue" border = 1>\n')
@@ -61,5 +67,5 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/diffReport.htm
 
 
 if __name__ == '__main__':
-    diffReport("Example/Input/Input.pdf", "Example/Input/Input1.pdf", "Example/Output/DiffReport.html",output_file=True)
-
+    diffReport("Example/Input/SampleInput1.pdf", "Example/Input/SampleInput2.pdf", 
+               output_file=True)

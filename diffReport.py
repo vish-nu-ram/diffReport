@@ -67,5 +67,5 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file
 
 
 if __name__ == '__main__':
-    diffReport("Example/Input/SampleInput1.pdf", "Example/Input/SampleInput2.pdf",
+    diffReport("Example/Input/SampleInputFile1.pdf", "Example/Input/SampleInputFile2.pdf",
                output_file=True)

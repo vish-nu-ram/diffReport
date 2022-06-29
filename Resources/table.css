@@ -3,6 +3,19 @@ body{
   color:#34495E;
 }
 
+replace {
+  background-color: yellow;
+  color: black;
+}
+insert {
+  background-color: lightgreen;
+  color: black;
+}
+delete {
+  background-color: pink;
+  color: black;
+}
+
 h1{
   text-align:center;
   text-transform:uppercase;

@@ -1,3 +1,4 @@
 fuzzywuzzy==0.18.0
 pandas==1.4.3
 pdfminer==20191125
+python-Levenshtein==0.12.2

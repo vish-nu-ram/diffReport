@@ -91,7 +91,6 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return
 
 
 if __name__ == '__main__':
-    x = diffReport("Example/Input/SampleInputFile1.pdf", "Example/Input/SampleInputFile2.pdf",
-                   output_file=True, html_return=False)
+    x = diffReport("Example/Input/SampleInputFile1.pdf", "Example/Input/SampleInputFile2.pdf", html_return=True)
 
     print(x)

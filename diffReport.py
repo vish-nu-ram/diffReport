@@ -5,7 +5,25 @@ import fuzzyCompare
 import pandas as pd
 
 
-def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file=True):
+def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file=True, html_return=True):
+    """
+
+    :param path_file_a: Path for the File A to be compared.
+    :param path_file_b: Path for the File B to be compared.
+    :param path_file_output: Path of the directory/folder where the output HTML file needs to be saved. (Default: 'Output/')
+    :param output_file: Boolean to select if an HTML output file is to be saved or not. (True by default)
+    :param html_return: Boolean to select if the function returns HTML of the report. (True by default)
+    :return: HTML for the report if html_return is set to True.
+
+    Function takes two PDF file paths as input, and generates a difference report with the lines that are different
+    in the two files, and also highlighting the differences in an HTML table with colors to represent content that
+    was Added, Removed or changed.
+
+    Any text that is present in File_a but not File_b is marked in Red.
+    Any text that is present in File_b but not File_a is marked in Green.
+    Any text that is neither present in string_a but nor string_b is marked in Yellow.
+    """
+
     text_extract_a = pdfparser(path_file_a)
     text_extract_b = pdfparser(path_file_b)
 
@@ -24,7 +42,7 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file
     for (i, j) in zip(text_lines_a, text_lines_b):
         res = fuzzyCompare.ratio(i, j, "partialTokenSortRatio")
         if res < 100:
-            a,b = markUpDifferences(i,j)
+            a, b = markUpDifferences(i, j)
             df.loc[count] = [a, b, res]
         count += 1
     df.reset_index(drop=True)
@@ -61,11 +79,18 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file
             iterreport.write("\t</tr>\n")
         iterreport.write("</tbody>\n")
         iterreport.write("</table>\n")
-        iterreport.write("</body>")
+        iterreport.write("</body>\n")
         iterreport.write("</html>\n")
         iterreport.close()
+    if html_return:
+        diff_report = open(path_file_output + "diffReport.html", 'r')
+        ret = diff_report.read()
+        diff_report.close()
+        return ret
 
 
 if __name__ == '__main__':
-    diffReport("Example/Input/SampleInputFile1.pdf", "Example/Input/SampleInputFile2.pdf",
-               output_file=True)
+    x = diffReport("Example/Input/SampleInputFile1.pdf", "Example/Input/SampleInputFile2.pdf",
+                   output_file=True)
+
+    print(x)

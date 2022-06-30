@@ -2,18 +2,49 @@ import difflib
 
 
 def mark_red(string):
+    """
+
+    :param string: String to be marked
+    :return: returns a String with markup tags
+
+    Function appends <delete></delete> markup tags to the input strings as prefix and suffix to return a marked string.
+    """
     return f'<delete>{string}</delete>'
 
 
 def mark_green(string):
+    """
+
+    :param string: String to be marked
+    :return: returns a String with markup tags
+
+    Function appends <insert></insert> markup tags to the input strings as prefix and suffix to return a marked string.
+    """
     return f'<insert>{string}</insert>'
 
 
 def mark_yellow(string):
+    """
+
+    :param string: String to be marked
+    :return: returns a String with markup tags
+
+    Function appends <replace></replace> markup tags to the input strings as prefix and suffix to return a marked string.
+    """
     return f'<replace>{string}</replace>'
 
 
 def markUpDifferences(string_a, string_b):
+    """
+
+    :param string_a: String one to compare :param string_b: String two to compare :return: String A, String B after
+    marking both strings with <insert>,<replace> and <delete> tags by comparing the differences between the two
+    strings.
+
+    Any text that is present in string_a but not string_b is marked with a <delete> markup tag.
+    Any text that is present in string_b but not string_a is marked with a <insert> markup tag.
+    Any text that is neither present in string_a but nor string_b is marked with a <replace> markup tag.
+    """
     s = difflib.SequenceMatcher(None, string_a, string_b)
     a_mark = [0] * len(string_a)  # Array to mark each index of StringA as either Delete, Insert, Replace or no change
     b_mark = [0] * len(string_b)  # Array to mark each index of StringB as either Delete, Insert, Replace or no change

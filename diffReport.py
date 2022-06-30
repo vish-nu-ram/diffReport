@@ -5,15 +5,14 @@ import fuzzyCompare
 import pandas as pd
 
 
-def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file=True, html_return=True):
+def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return=True):
     """
 
     :param path_file_a: Path for the File A to be compared.
     :param path_file_b: Path for the File B to be compared.
-    :param path_file_output: Path of the directory/folder where the output HTML file needs to be saved. (Default: 'Output/')
-    :param output_file: Boolean to select if an HTML output file is to be saved or not. (True by default)
+    :param path_file_output: Path of the directory where the output HTML file needs to be saved. (Default: 'Output/')
     :param html_return: Boolean to select if the function returns HTML of the report. (True by default)
-    :return: HTML for the report if html_return is set to True.
+    :return: HTML for the report if html_return is set to True.  If set to false, it will return the DataFrame.
 
     Function takes two PDF file paths as input, and generates a difference report with the lines that are different
     in the two files, and also highlighting the differences in an HTML table with colors to represent content that
@@ -48,7 +47,7 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file
     df.reset_index(drop=True)
 
     # path_file_output
-    if output_file:
+    if True:
         diff_report = open(path_file_output + "diffReport.html", 'w')
         diff_report.write("<html>\n")
         diff_report.close()
@@ -87,10 +86,12 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', output_file
         ret = diff_report.read()
         diff_report.close()
         return ret
+    else:
+        return df
 
 
 if __name__ == '__main__':
     x = diffReport("Example/Input/SampleInputFile1.pdf", "Example/Input/SampleInputFile2.pdf",
-                   output_file=True)
+                   output_file=True, html_return=False)
 
     print(x)

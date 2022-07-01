@@ -1,34 +1,218 @@
-Sample Input File 2 
+                                                                                                                 
+
  
-This is a sample PDF file to be used as input to test diffReport functionalities. 
-This is a sample line to text for input 2 
+
+Date: 23 May 2022 
  
-More sample text 
+To : XYZ Bank Limited 
  
-Two roads diverged in a wood, 
-And sorry I could not travel both ways 
-And be one traveler, long I stood 
-And looked down one as far as I could look 
-To where it bent ; 
+Deal ID : 08002010QWE 
  
-Then took the other, as just as fair, 
-And having perhaps a better claim, 
-Because it was grassy and wanted wear; 
-Though as for that the passing there 
-Had worn them really about the same, 
+ABC Bank Ltd 
+Address line 1 
+Address line 2  
+Ph no: +353 089010101 
+
  
-And both that evening equally lay 
-In leaves no step had trodden black. 
-Oh, I kept the first for another day! 
-Yet knowing how way leads on to way, 
-I doubted if I should ever come back. 
  
-I shall be telling this without a sigh 
-Somewhere ages and ages hence: 
-Two roads diverged in the wood, and I— 
-I took the one less traveled by, 
-And that has made all the difference. 
  
-This is the end of the sample input file 1. 
+ 
+
+ 
+
+ 
+
+FX Currency Option transaction 
+
+ 
+This is a sample letter created for the purpose of testing the regression tool for PDF 
+comparisons and change detection and reporting.  
+The document will have random paragraphs with text and number that act as a placeholder 
+text for performing various testing on the functionality of the diff Report module. The 
+document will also have content laid out is a structure resembling any random given contract 
+to have a better picture of how the tool performs with text aligned in various structures and 
+alignments. There could be minor changes across multiple documents that the tool is 
+expected to report in the final output. 
+ 
+This confirmation is a part of the master agreement dated as of 25 August 2016, as amended 
+and supplemented from time to time between ABC bank and XYZ Bank Ltd. 
+ 
+Option A 
+ 
+
+A)  Trade details: 
+
+ 
+
+Trade ID : 
+ 
+Trade Date : 
+ 
+Buyer : 
+ 
+Option Style : 
+ 
+Option Type : 
+
+Put Currency and amount : 
+ 
+Call Currency and amount: 
+
+08002010QWE 
+
+23 May 2022 
+
+ABC Bank 
+
+European 
+
+INR Put/ Eur Call 
+ 
+INR 2,000,000,000 
+
+Eur 20,000,000 
+
+Trade ID: 08002010QWE 
+
+ABC Bank Ltd. 
+
+  1 
+
+ 
+
+                                                                                                                 
+
+ 
+
+ 
+Price: 
+ 
+Ref Currency: 
+ 
+Payment Date: 
+ 
+Expiration Date: 
+ 
+Valuation Date:  
+
+Premium: 
+
+Premium: 
+
+Premium Payment Date: 
+
+100 INR / EUR 
+
+Indian Rupee 
+
+June 01 2022 
+
+May 28 2022 
+
+Subject to adjustment in accordance with 
+business conventions as per the master 
+agreement. 
+ 
+EUR 8,000 
+ 
+EUR 8,000 
+ 
+23 May 2022 
+ 
+Mumbai, London 
+ 
+ 
+
+Relevant City: 
+ 
+ 
+
+ 
+
+Other terms and conditions : 
+ 
+
+Condition 1 
+
+Condition 2 
+
+Condition 3 
+
+Condition 4 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+sed do eiusmod tempor incididunt ut labore et dolore 
+magna aliqua. Et tortor at risus viverra adipiscing at in. 
+Feugiat sed lectus vestibulum mattis ullamcorper velit sed 
+ullamcorper. Nibh venenatis cras sed felis. Pellentesque 
+pulvinar pellentesque habitant morbi tristique senectus et. 
+ 
+Volutpat lacus laoreet non curabitur gravida arcu ac. Et leo 
+duis ut diam quam. Lectus vestibulum mattis ullamcorper 
+velit. 
+ 
+Auctor eu augue ut lectus arcu bibendum at varius. Nisl 
+rhoncus mattis rhoncus urna neque. Et ultrices neque 
+ornare aenean euismod elementum nisi quis. Felis donec et 
+odio pellentesque diam. Sed id semper risus in. Tristique 
+sollicitudin nibh sit amet commodo. 
+ 
+Et ultrices neque ornare aenean euismod elementum nisi 
+quis. Felis donec et eu augue ut lectus arcu bibendum at 
+varius. Nisl rhoncus mattis rhoncus urna neque. Et ultrices 
+
+Trade ID: 08002010QWE 
+
+ABC Bank Ltd. 
+
+  2 
+
+ 
+
+                                                                                                                 
+
+ 
+
+neque ornare odio pellentesque diam. Sed id semper risus 
+in. Tristique sollicitudin nibh sit amet commodo. 
+ 
+Et ultrices neque ornare aenean euismod elementum nisi 
+quis. Felis donec et odio pellentesque diam. Sed id semper 
+risus in. Tristique sollicitudin nibh sit amet commodo. 
+ 
+
+ 
+Please confirm that these correctly sets forth the terms of the agreement by executing a copy 
+of this  
+ 
+Yours Sincerely, 
+ 
+ABC Bank Ltd. 
+ 
+Name: _________________ 
+ 
+Title : __________________ 
+ 
+ 
+I have accepted and confirmed the Details 
+ 
+ 
+ 
+ 
+ 
+Signature: ______________ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+Trade ID: 08002010QWE 
+
+ABC Bank Ltd. 
+
+  3 
 
 

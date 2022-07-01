@@ -33,64 +33,108 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return
     f.write(text_extract_b)
     f.close()
 
-    text_lines_a = open('Temp/Text_Input1.txt').readlines()
-    text_lines_b = open('Temp/Text_Input2.txt').readlines()
+    # text_lines_a = open('Temp/Text_Input1.txt').readlines()
+    # text_lines_b = open('Temp/Text_Input2.txt').readlines()
 
-    df = pd.DataFrame(columns=['File1', 'File2', 'Ratio'])
+    text_lines_a = text_extract_a.split('\n')
+    text_lines_b = text_extract_b.split('\n')
+    print(text_lines_a)
+
+    junk = ['', ' ', '   ', '\t', '                                                                                                                 ']
+    text_lines_a = [x for x in text_lines_a if x not in junk]
+    text_lines_b = [x for x in text_lines_b if x not in junk]
+    """
+    
+    for j in junk:
+        if j in text_lines_a:
+            text_lines_a.remove(j)
+        if j in text_lines_b:
+            text_lines_b.remove(j)
+    print(text_lines_a)
+    """
+    print(text_lines_a)
+
+    df = pd.DataFrame(columns=['File1', 'File2', 'Ratio', 'Partial Ratio'])
     count = 0
     for (i, j) in zip(text_lines_a, text_lines_b):
-        res = fuzzyCompare.ratio(i, j, "partialTokenSortRatio")
-        if res < 100:
-            a, b = markUpDifferences(i, j)
-            df.loc[count] = [a, b, res]
+        a = i
+        b = difflib.get_close_matches(a, text_lines_b, n=1)
+        if b:
+            b = b[0]
+        else:
+            b = ''
+        ratio = fuzzyCompare.ratio(a, b)
+        partialRatio = fuzzyCompare.ratio(a, b, "tokenSortRatio")
+        if a != b:
+            a, b = markUpDifferences(a, b)
+            df.loc[count] = [a, b, ratio, partialRatio]
         count += 1
     df.reset_index(drop=True)
 
     # path_file_output
-    if True:
-        diff_report = open(path_file_output + "diffReport.html", 'w')
-        diff_report.write("<html>\n")
-        diff_report.close()
-
-        css_file = open("Resources/table.css", 'r')
-        css = css_file.read()
-        css_file.close()
-        css_file = open(path_file_output + "table.css", 'w')
-        css_file.write(css)
-
-        iterreport = open(path_file_output + "diffReport.html", 'a')
-        iterreport.write('<head>\n<link rel="stylesheet" href="table.css"></head>')
-        iterreport.write("<body>")
-        iterreport.write('<table class="blue" border = 1>\n')
-        iterreport.write("<tbody>\n")
-        iterreport.write('\t<tr style = "background-color : #1ABC9C">\n')
-        iterreport.write(f'\t\t<th>Line Number</th>\n')
-        iterreport.write(f'\t\t<td>File 1</td>\n')
-        iterreport.write(f'\t\t<td>File 2</td>\n')
-        iterreport.write(f'\t\t<td>Ratio</td>\n')
-        iterreport.write("\t</tr>\n")
-        for index, row in df.iterrows():
-            iterreport.write("\t<tr>\n")
-            iterreport.write(f'\t\t<th>{index}</th>\n')
-            iterreport.write(f'\t\t<td>{str(row["File1"]).strip()}</td>\n')
-            iterreport.write(f'\t\t<td>{str(row["File2"]).strip()}</td>\n')
-            iterreport.write(f'\t\t<td>{str(row["Ratio"]).strip()}</td>\n')
-            iterreport.write("\t</tr>\n")
-        iterreport.write("</tbody>\n")
-        iterreport.write("</table>\n")
-        iterreport.write("</body>\n")
-        iterreport.write("</html>\n")
-        iterreport.close()
     if html_return:
-        diff_report = open(path_file_output + "diffReport.html", 'r')
-        ret = diff_report.read()
-        diff_report.close()
-        return ret
+        return html_output(df, path_file_output)
+
     else:
         return df
 
 
-if __name__ == '__main__':
-    x = diffReport("Example/Input/SampleInputFile1.pdf", "Example/Input/SampleInputFile2.pdf", html_return=True)
+def html_output(df, path_file_output):
+    """
 
-    print(x)
+    :param df: Data Frame to be displayed as an HTM Table
+    :param path_file_output: Path of the directory where the output HTML file needs to be saved. (Default: 'Output/')
+    :return: Returns the HTML for the table generated.
+
+    The function accepts the Data frame as an argument to iterate through the rows and generate an HTML table with
+    the contents of the dataframe and linking it with the CSS file form the Resources folder.
+
+    """
+    diff_report = open(path_file_output + "diffReport.html", 'w')
+    diff_report.write("<html>\n")
+    diff_report.close()
+
+    css_file = open("Resources/table.css", 'r')
+    css = css_file.read()
+    css_file.close()
+    css_file = open(path_file_output + "table.css", 'w')
+    css_file.write(css)
+
+    iterreport = open(path_file_output + "diffReport.html", 'a')
+    iterreport.write('<head>\n<link rel="stylesheet" href="table.css"></head>')
+    iterreport.write("<body>")
+    iterreport.write('<table class="blue" border = 1>\n')
+    iterreport.write("<tbody>\n")
+    iterreport.write('\t<tr style = "background-color : #1ABC9C">\n')
+    iterreport.write(f'\t\t<th>Line Number</th>\n')
+    iterreport.write(f'\t\t<td>File 1</td>\n')
+    iterreport.write(f'\t\t<td>File 2</td>\n')
+    iterreport.write(f'\t\t<td>Ratio</td>\n')
+    iterreport.write(f'\t\t<td>Partial Ratio</td>\n')
+
+    iterreport.write("\t</tr>\n")
+    for index, row in df.iterrows():
+        iterreport.write("\t<tr>\n")
+        iterreport.write(f'\t\t<th>{index}</th>\n')
+        iterreport.write(f'\t\t<td>{str(row["File1"]).strip()}</td>\n')
+        iterreport.write(f'\t\t<td>{str(row["File2"]).strip()}</td>\n')
+        iterreport.write(f'\t\t<td>{str(row["Ratio"]).strip()}</td>\n')
+        iterreport.write(f'\t\t<td>{str(row["Partial Ratio"]).strip()}</td>\n')
+        iterreport.write("\t</tr>\n")
+    iterreport.write("</tbody>\n")
+    iterreport.write("</table>\n")
+    iterreport.write("</body>\n")
+    iterreport.write("</html>\n")
+    iterreport.close()
+
+    diff_report = open(path_file_output + "diffReport.html", 'r')
+    ret = diff_report.read()
+    diff_report.close()
+
+    return ret
+
+
+if __name__ == '__main__':
+    x = diffReport("Example/Input/SampleContract1.pdf", "Example/Input/SampleContract2.pdf", html_return=True)
+
+    # print(x)

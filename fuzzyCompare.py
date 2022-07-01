@@ -1,8 +1,9 @@
 from fuzzywuzzy import fuzz
 
 
-def ratio(t1, t2, ratio_type):
+def ratio(t1, t2, ratio_type="default"):
     switcher = {
+        "Ratio": ratio,
         "qRatio": qRatio,
         "wRatio": wRatio,
         "partialRatio": partialRatio,
@@ -10,7 +11,10 @@ def ratio(t1, t2, ratio_type):
         "tokenSortRatio": tokenSortRatio,
         "partialTokenSortRatio": partialTokenSortRatio,
     }
-    result = switcher[ratio_type](t1, t2)
+    if ratio_type == "default":
+        result = fuzz.ratio(t1, t2)
+    else:
+        result = switcher[ratio_type](t1, t2)
     return result
 
 

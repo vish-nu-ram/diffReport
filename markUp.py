@@ -1,43 +1,11 @@
 import difflib
 
 
-def mark_red(string):
-    """
-
-    :param string: String to be marked
-    :return: returns a String with markup tags
-
-    Function appends <delete></delete> markup tags to the input strings as prefix and suffix to return a marked string.
-    """
-    return f'<delete>{string}</delete>'
-
-
-def mark_green(string):
-    """
-
-    :param string: String to be marked
-    :return: returns a String with markup tags
-
-    Function appends <insert></insert> markup tags to the input strings as prefix and suffix to return a marked string.
-    """
-    return f'<insert>{string}</insert>'
-
-
-def mark_yellow(string):
-    """
-
-    :param string: String to be marked
-    :return: returns a String with markup tags
-
-    Function appends <replace></replace> markup tags to the input strings as prefix and suffix to return a marked string.
-    """
-    return f'<replace>{string}</replace>'
-
-
 def markUpDifferences(string_a, string_b):
     """
 
-    :param string_a: String one to compare :param string_b: String two to compare :return: String A, String B after
+    :param string_a: String one to compare
+    :param string_b: String two to compare :return: String A, String B after
     marking both strings with <insert>,<replace> and <delete> tags by comparing the differences between the two
     strings.
 
@@ -94,3 +62,38 @@ def markUpDifferences(string_a, string_b):
     b_new = b_new.replace("</insert><insert>", "")
 
     return a_new, b_new
+
+
+
+def mark_red(string):
+    """
+
+    :param string: String to be marked
+    :return: returns a String with markup tags
+
+    Function appends <delete></delete> markup tags to the input strings as prefix and suffix to return a marked string.
+    """
+    return f'<delete>{string}</delete>'
+
+
+def mark_green(string):
+    """
+
+    :param string: String to be marked
+    :return: returns a String with markup tags
+
+    Function appends <insert></insert> markup tags to the input strings as prefix and suffix to return a marked string.
+    """
+    return f'<insert>{string}</insert>'
+
+
+def mark_yellow(string):
+    """
+
+    :param string: String to be marked
+    :return: returns a String with markup tags
+
+    Function appends <replace></replace> markup tags to the input strings as prefix and suffix to return a marked string.
+    """
+    return f'<replace>{string}</replace>'
+

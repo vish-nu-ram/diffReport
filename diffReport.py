@@ -5,7 +5,7 @@ import fuzzyCompare
 import pandas as pd
 
 
-def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return=True, partial_ratio = "tokenSortRatio"):
+def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return=True, partial_ratio="tokenSortRatio"):
     """
 
     :param path_file_a: Path for the File A to be compared.

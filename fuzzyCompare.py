@@ -11,7 +11,7 @@ def ratio(t1, t2, ratio_type="default"):
         "tokenSortRatio": tokenSortRatio,
         "partialTokenSortRatio": partialTokenSortRatio,
     }
-    if ratio_type == "default":
+    if ratio_type not in ("Ratio", "qRatio", "wRatio", "partialRatio", "tokenSetRatio", "tokenSortRatio", "partialTokenSortRatio"):
         result = fuzz.ratio(t1, t2)
     else:
         result = switcher[ratio_type](t1, t2)

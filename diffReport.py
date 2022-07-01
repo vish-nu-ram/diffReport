@@ -5,13 +5,14 @@ import fuzzyCompare
 import pandas as pd
 
 
-def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return=True):
+def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return=True, partial_ratio = "tokenSortRatio"):
     """
 
     :param path_file_a: Path for the File A to be compared.
     :param path_file_b: Path for the File B to be compared.
     :param path_file_output: Path of the directory where the output HTML file needs to be saved. (Default: 'Output/')
     :param html_return: Boolean to select if the function returns HTML of the report. (True by default)
+    :param partial_ratio: Partial Ratio Type, Accepted Values are ("Ratio", "qRatio", "wRatio", "ratio_2", "tokenSetRatio", "tokenSortRatio", "partialTokenSortRatio", "default")
     :return: HTML for the report if html_return is set to True.  If set to false, it will return the DataFrame.
 
     Function takes two PDF file paths as input, and generates a difference report with the lines that are different
@@ -23,8 +24,8 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return
     Any text that is neither present in string_a but nor string_b is marked in Yellow.
     """
 
-    text_extract_a = pdfparser(path_file_a)
-    text_extract_b = pdfparser(path_file_b)
+    text_extract_a = pdfparser(path_file_a)  # Extract contents of PDF as string
+    text_extract_b = pdfparser(path_file_b)  # Extract contents of PDF as string
 
     f = open('Temp/Text_Input1.txt', 'w')
     f.write(text_extract_a)
@@ -38,21 +39,10 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return
 
     text_lines_a = text_extract_a.split('\n')
     text_lines_b = text_extract_b.split('\n')
-    print(text_lines_a)
 
     junk = ['', ' ', '   ', '\t', '                                                                                                                 ']
     text_lines_a = [x for x in text_lines_a if x not in junk]
     text_lines_b = [x for x in text_lines_b if x not in junk]
-    """
-    
-    for j in junk:
-        if j in text_lines_a:
-            text_lines_a.remove(j)
-        if j in text_lines_b:
-            text_lines_b.remove(j)
-    print(text_lines_a)
-    """
-    print(text_lines_a)
 
     df = pd.DataFrame(columns=['File1', 'File2', 'Ratio', 'Partial Ratio'])
     count = 0
@@ -64,10 +54,10 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return
         else:
             b = ''
         ratio = fuzzyCompare.ratio(a, b)
-        partialRatio = fuzzyCompare.ratio(a, b, "tokenSortRatio")
+        ratio_2 = fuzzyCompare.ratio(a, b, partial_ratio)
         if a != b:
             a, b = markUpDifferences(a, b)
-            df.loc[count] = [a, b, ratio, partialRatio]
+            df.loc[count] = [a, b, ratio, ratio_2]
         count += 1
     df.reset_index(drop=True)
 

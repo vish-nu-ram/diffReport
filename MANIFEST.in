@@ -1,0 +1,7 @@
+include *.txt
+recursive-include src *.DS_Store
+recursive-include src *.css
+recursive-include src *.html
+recursive-include src *.pdf
+recursive-include src *.py
+recursive-include src *.txt

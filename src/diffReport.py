@@ -27,12 +27,12 @@ def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return
     text_extract_a = pdfparser(path_file_a)  # Extract contents of PDF as string
     text_extract_b = pdfparser(path_file_b)  # Extract contents of PDF as string
 
-    f = open('Temp/Text_Input1.txt', 'w')
-    f.write(text_extract_a)
-    f.close()
-    f = open('Temp/Text_Input2.txt', 'w')
-    f.write(text_extract_b)
-    f.close()
+    #f = open('Temp/Text_Input1.txt', 'w')
+    #f.write(text_extract_a)
+    #f.close()
+    #f = open('Temp/Text_Input2.txt', 'w')
+    #f.write(text_extract_b)
+    #f.close()
 
     # text_lines_a = open('Temp/Text_Input1.txt').readlines()
     # text_lines_b = open('Temp/Text_Input2.txt').readlines()

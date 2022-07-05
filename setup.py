@@ -4,7 +4,7 @@ with open("README.md","r") as fh:
     long_description = fh.read()
 setup(
     name='diffReport',
-    version=' 0.0.1',
+    version=' 0.0.3',
     description='File comparison and report differences',
     py_modules=["diffReport","fuzzyCompare","markUp","pdfParser"],
     package_dir={'': 'src'},

@@ -5,7 +5,7 @@ import fuzzyCompare
 import pandas as pd
 
 
-def diffReport(path_file_a, path_file_b, path_file_output='Output/', html_return=True, partial_ratio="tokenSortRatio"):
+def diffReport(path_file_a, path_file_b, path_file_output='', html_return=True, partial_ratio="tokenSortRatio"):
     """
 
     :param path_file_a: Path for the File A to be compared.
@@ -84,14 +84,23 @@ def html_output(df, path_file_output):
     diff_report.write("<html>\n")
     diff_report.close()
 
-    css_file = open("Resources/table.css", 'r')
-    css = css_file.read()
-    css_file.close()
-    css_file = open(path_file_output + "table.css", 'w')
-    css_file.write(css)
+    #css_file = open("Resources/table.css", 'r')
+    #css = css_file.read()
+    #css_file.close()
+    #css_file = open(path_file_output + "table.css", 'w')
+    #css_file.write(css)
 
     iterreport = open(path_file_output + "diffReport.html", 'a')
-    iterreport.write('<head>\n<link rel="stylesheet" href="table.css"></head>')
+    iterreport.write('<head>\n<style>\nbody{font:1.2em normal Arial,sans-serif;color:#34495E;}replace {'
+                     'background-color: yellow;color: black;}insert {background-color: lightgreen;color: '
+                     'black;}delete {background-color: pink;color: black;}h1{'
+                     'text-align:center;text-transform:uppercase;letter-spacing:-2px;font-size:2.5em;margin:20px '
+                     '0;}.container{width:90%;margin:auto;}table{border-collapse:collapse;width:100%;}.blue{'
+                     'border:2px solid #1ABC9C;}.blue thead{background:#1ABC9C;}thead{color:white;}th,'
+                     'td{text-align:center;padding:5px 0;}tbody tr:nth-child(even){background:#ECF0F1;}tbody '
+                     'tr:hover{background:#BDC3C7;color:#FFFFFF;}.fixed{'
+                     'top:0;position:fixed;width:auto;display:none;border:none;}.scrollMore{margin-top:600px;}.up{'
+                     'cursor:pointer;}\n</style></head>')
     iterreport.write("<body>")
     iterreport.write('<table class="blue" border = 1>\n')
     iterreport.write("<tbody>\n")

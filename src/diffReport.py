@@ -115,10 +115,8 @@ def html_output(df, path_file_output):
     for index, row in df.iterrows():
         iterreport.write("\t<tr>\n")
         iterreport.write(f'\t\t<th>{index}</th>\n')
-        iterreport.write(f'\t\t<td>{str(row["File1"]).strip()}</td>\n')
-        iterreport.write(f'\t\t<td>{str(row["File2"]).strip()}</td>\n')
-        iterreport.write(f'\t\t<td>{str(row["Ratio"]).strip()}</td>\n')
-        iterreport.write(f'\t\t<td>{str(row["Partial Ratio"]).strip()}</td>\n')
+        for i in range(row.count()):
+            iterreport.write(f'\t\t<td>{str(row[i]).strip()}</td>\n')
         iterreport.write("\t</tr>\n")
     iterreport.write("</tbody>\n")
     iterreport.write("</table>\n")

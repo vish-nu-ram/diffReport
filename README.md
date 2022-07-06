@@ -53,13 +53,16 @@ html_6 = diffReport("file_path_a","file_path_b",partial_ratio = "partialTokenSor
 Function takes two PDF file paths as input, and generates a difference report with the lines that are different in the two files, and also highlighting the differences in an HTML table with colors to represent content that was Added, Removed or changed.
         
 Any text that is present in File_a but not File_b is marked in Red.
-![mark_green.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/mark_green.png)
+
+![mark_red.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/mark_red.png)
 
 Any text that is present in File_b but not File_a is marked in Green.
-![mark_red.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/mark_red.png)
+
+![mark_green.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/mark_green.png)
 
 Any text that is neither present in string_a but nor string_b is marked in Yellow.
    
+### html_output
 
 The 'html_output' function accepts the Data frame as an argument to iterate through the rows and returns an HTML table 
 ```
@@ -83,7 +86,46 @@ df = pd.DataFrame(data, columns=['Name', 'Age'])
 # print dataframe.
 print(df)
 ```
-![df.png](src/Example/Images/Df.png)
+![df.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/Df.png)
+
+```python
+html_output(df)
+```
+Returns:
+```html
+<html>
+<head>
+<style>
+body{font:1.2em normal Arial,sans-serif;color:#34495E;}replace {background-color: yellow;color: black;}insert {background-color: lightgreen;color: black;}delete {background-color: pink;color: black;}h1{text-align:center;text-transform:uppercase;letter-spacing:-2px;font-size:2.5em;margin:20px 0;}.container{width:90%;margin:auto;}table{border-collapse:collapse;width:100%;}.blue{border:2px solid #1ABC9C;}.blue thead{background:#1ABC9C;}thead{color:white;}th,td{text-align:center;padding:5px 0;}tbody tr:nth-child(even){background:#ECF0F1;}tbody tr:hover{background:#BDC3C7;color:#FFFFFF;}.fixed{top:0;position:fixed;width:auto;display:none;border:none;}.scrollMore{margin-top:600px;}.up{cursor:pointer;}
+</style></head><body><table class="blue" border = 1>
+<tbody>
+	<tr style = "background-color : #1ABC9C">
+		<th>Line Number</th>
+		<td>File 1</td>
+		<td>File 2</td>
+		<td>Ratio</td>
+		<td>Partial Ratio</td>
+	</tr>
+	<tr>
+		<th>0</th>
+		<td>tom</td>
+		<td>10</td>
+	</tr>
+	<tr>
+		<th>1</th>
+		<td>nick</td>
+		<td>15</td>
+	</tr>
+	<tr>
+		<th>2</th>
+		<td>juli</td>
+		<td>14</td>
+	</tr>
+</tbody>
+</table>
+</body>
+</html>
+```
 ### markUp
 
 FUNCTIONS

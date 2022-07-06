@@ -4,9 +4,12 @@ with open("README.md","r") as fh:
     long_description = fh.read()
 setup(
     name='diffReport',
-    version=' 0.0.3',
+    version=' 0.0.7',
     description='File comparison and report differences',
-    py_modules=["diffReport","fuzzyCompare","markUp","pdfParser"],
+    long_description= long_description,
+    long_description_content_type = "text/markdown",
+    py_modules=["diffReport", "fuzzyCompare", "markUp", "pdfParser"],
+    install_requires=["fuzzywuzzy", "pandas", "pdfminer", "python-Levenshtein"],
     package_dir={'': 'src'},
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -17,5 +20,5 @@ setup(
     ],
     url="https://github.com/vish-nu-ram/diffReport",
     author="Vishnuram",
-    author_email="vishnu.ram@hotmail.com"
+    author_email="vishnu.ram@hotmail.com",
 )

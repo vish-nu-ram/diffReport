@@ -16,11 +16,28 @@ from diffReport import diffReport
 
 html = diffReport("file_path_a","file_path_b")
 ```
+To Specify a particular output folder for the generated HTML output, you may specify the path in 'path_file_output' argument to the function, which is optional. By default the output is created on the working directory
+```python
+html = diffReport("file_path_a","file_path_b",path_file_output = 'Output/')
+```
 
+To get a return as a Dataframe instead of HTML from the function, you may set 'html_return' to false. By default it is always set to True.
+```python
+df = diffReport("file_path_a","file_path_b",html_return = False)
+```
+
+There are various Ratios available to be displayed on the Partial Ratio column of the output, which can be specified in the 'partial_ratio' argument. By default it is set to "tokenSortRatio".
+```python
+html_1 = diffReport("file_path_a","file_path_b",partial_ratio = "tokenSortRatio")
+html_2 = diffReport("file_path_a","file_path_b",partial_ratio = "qRatio")
+html_3 = diffReport("file_path_a","file_path_b",partial_ratio = "wRatio")
+html_4 = diffReport("file_path_a","file_path_b",partial_ratio = "partialRatio")
+html_5 = diffReport("file_path_a","file_path_b",partial_ratio = "tokenSetRatio")
+html_6 = diffReport("file_path_a","file_path_b",partial_ratio = "partialTokenSortRatio")
+
+```
 ## Modules
 ### diffReport
-
-FUNCTIONS
 
 ```
     diffReport(path_file_a, path_file_b, path_file_output='', html_return=True, partial_ratio='tokenSortRatio')
@@ -36,21 +53,37 @@ FUNCTIONS
 Function takes two PDF file paths as input, and generates a difference report with the lines that are different in the two files, and also highlighting the differences in an HTML table with colors to represent content that was Added, Removed or changed.
         
 Any text that is present in File_a but not File_b is marked in Red.
-![img.png](src/Example/Images/mark_green.png)
+![mark_green.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/mark_green.png)
+
 Any text that is present in File_b but not File_a is marked in Green.
-![img.png](src/Example/Images/mark_red.png)
+![mark_red.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/mark_red.png)
+
 Any text that is neither present in string_a but nor string_b is marked in Yellow.
    
+
+The 'html_output' function accepts the Data frame as an argument to iterate through the rows and returns an HTML table 
 ```
     html_output(df, path_file_output)
         :param df: Data Frame to be displayed as an HTM Table
         :param path_file_output: Path of the directory where the output HTML file needs to be saved. (Default: 'Output/')
         :return: Returns the HTML for the table generated.
      
-``` 
-       
-The function accepts the Data frame as an argument to iterate through the rows and generate an HTML table with
+```
+Example:
+```python
+# Import pandas library
+import pandas as pd
 
+# initialize list of lists
+data = [['tom', 10], ['nick', 15], ['juli', 14]]
+
+# Create the pandas DataFrame
+df = pd.DataFrame(data, columns=['Name', 'Age'])
+
+# print dataframe.
+print(df)
+```
+![df.png](src/Example/Images/Df.png)
 ### markUp
 
 FUNCTIONS
@@ -68,9 +101,8 @@ Any text that is present in string_a but not string_b is marked with a <delete> 
 ```python
     markUpDifferences("Hello World !","Hello !")
 ```
-```commandline
     returns >> "Hello <delete>World </delete>!"
-```
+
 Any text that is present in string_b but not string_a is marked with a <insert> markup tag.
 ```python
     markUpDifferences("Hello !","Hello World !")

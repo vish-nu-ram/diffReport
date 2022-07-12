@@ -61,7 +61,9 @@ Any text that is present in File_b but not File_a is marked in Green.
 ![mark_green.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/mark_green.png)
 
 Any text that is neither present in string_a but nor string_b is marked in Yellow.
-   
+
+![mark_green.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/mark_yellow.png)
+
 ### html_output
 
 The 'html_output' function accepts the Data frame as an argument to iterate through the rows and returns an HTML table 

@@ -2,6 +2,13 @@ from fuzzywuzzy import fuzz
 
 
 def ratio(t1, t2, ratio_type="default"):
+    """
+
+    :param t1: Text string 1
+    :param t2: Text String 2
+    :param ratio_type: Type of ratio score to be calculated between the two strings, default set to Ratio.
+    :return: The Ratio of similarity among the texts with 100 being a complete match and 0 being no match.
+    """
     switcher = {
         "Ratio": ratio,
         "qRatio": qRatio,
@@ -15,6 +22,7 @@ def ratio(t1, t2, ratio_type="default"):
         result = fuzz.ratio(t1, t2)
     else:
         result = switcher[ratio_type](t1, t2)
+        # Call the appropriate function as per ratio type passed in the function call
     return result
 
 

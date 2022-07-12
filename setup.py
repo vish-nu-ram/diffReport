@@ -1,13 +1,13 @@
 from setuptools import setup
 
-with open("README.md","r") as fh:
+with open("README.md", "r") as fh:
     long_description = fh.read()
 setup(
     name='diffReport',
     version=' 0.0.11',
     description='File comparison and report differences',
-    long_description= long_description,
-    long_description_content_type = "text/markdown",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     py_modules=["diffReport", "fuzzyCompare", "markUp", "pdfParser"],
     install_requires=["fuzzywuzzy", "pandas", "pdfminer", "python-Levenshtein"],
     package_dir={'': 'src'},

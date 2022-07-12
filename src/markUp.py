@@ -5,9 +5,8 @@ def markUpDifferences(string_a, string_b):
     """
 
     :param string_a: String one to compare
-    :param string_b: String two to compare :return: String A, String B after
-    marking both strings with <insert>,<replace> and <delete> tags by comparing the differences between the two
-    strings.
+    :param string_b: String two to compare
+    :return: String A, String B after marking both strings with <insert>,<replace> and <delete> tags by comparing the differences between the two strings.
 
     Any text that is present in string_a but not string_b is marked with a <delete> markup tag.
     Any text that is present in string_b but not string_a is marked with a <insert> markup tag.
@@ -18,6 +17,11 @@ def markUpDifferences(string_a, string_b):
     b_mark = [0] * len(string_b)  # Array to mark each index of StringB as either Delete, Insert, Replace or no change
 
     for tag, i1, i2, j1, j2 in s.get_opcodes():
+
+        # Tag is the action to be performed for transforming, i.e. insert delete or replace
+        # i1,i2,j1 and j2 are the indices of the characters that needs to be changed.
+        # i1 and i2 correspond to string 1 indices, j1 and j2 correspond to string 2 indices.
+
         if tag == "delete":
             for n in range(i1, i2):
                 a_mark[n] = "-"

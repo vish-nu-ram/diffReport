@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setup(
     name='diffReport',
-    version=' 0.0.14',
+    version=' 0.0.16',
     description='File comparison and report differences',
     long_description=long_description,
     long_description_content_type="text/markdown",

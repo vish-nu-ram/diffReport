@@ -22,4 +22,6 @@ def pdfparser(path):
         interpreter.process_page(page)
         pdf_text = retstr.getvalue()
 
+    fp.close()
+
     return pdf_text

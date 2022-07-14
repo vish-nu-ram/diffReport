@@ -117,8 +117,7 @@ body{font:1.2em normal Arial,sans-serif;color:#34495E;}replace {background-color
 		<th>Line Number</th>
 		<td>File 1</td>
 		<td>File 2</td>
-		<td>Ratio</td>
-		<td>Partial Ratio</td>
+		<td>Column 3</td>
 	</tr>
 	<tr>
 		<th>0</th>

@@ -9,6 +9,18 @@ Run the following to install:
 pip install diffReport
 ```
 
+## Dependencies
+
+The package dependencies are:
+
+ Pandas
+ PDFMiner
+ FuzzyWuzzy
+
+Python-Levenshtein is an optional library that can greatly improve the performance of the tool. Native python sequence matcher can perform the tasks as well, but including Python-Levenshtein can increase the sequence matching speeds by 10x to 30x
+
+The package is set up to automatically install the dependencies during installation.
+
 ## Usage
 
 ```python
@@ -182,35 +194,10 @@ Function appends <replace></replace> markup tags to the input strings as prefix 
 
 ### fuzzyCompare
 
-FUNCTIONS
+#### FUNCTIONS
 
-    partialRatio(t1, t2)
-        :param t1: Text string 1
-        :param t2: Text String 2
-        :return: Returns the Partial Ratio score etween the two given text
-        
-Function to calculate the ratio of the most similar substring as a number between 0 and 100.
-        
-Example : "" and "" returns a score of :
-    
-    partialTokenSortRatio(t1, t2)
-        :param t1: Text string 1
-        :param t2: Text String 2
-        :return: Returns the Partial Token Sort Ratio score between the two given text
-        
-Function to calculate the ratio of??????????????????????????
-        
-Example : "" and "" returns a score of :
-    
-     qRatio(t1, t2)
-        :param t1: Text string 1
-        :param t2: Text String 2
-        :return: Returns the Q Ratio score between the two given text
-        
-Function to calculate the ratio of??????????????????????????
-        
-Example : "" and "" returns a score of :
-    
+##### Ratio
+
     ratio(t1, t2, ratio_type='default')
     
     tokenSetRatio(t1, t2)
@@ -218,27 +205,50 @@ Example : "" and "" returns a score of :
         :param t2: Text String 2
         :return: Returns the Token Set Ratio score between the two given text
         
-Function to calculate the ratio of??????????????????????????
-        
-Example : "" and "" returns a score of :
+The Ratio option calculates the absolute Levenshtein distance between the two strings provided to the function. It returns a percentage value. A Levenshtein distance of 90% implies that String B has a 90% similarity to String B. It is a direct string to string comparison.
     
+##### Partial Ratio
+
+    partialRatio(t1, t2)
+        :param t1: Text string 1
+        :param t2: Text String 2
+        :return: Returns the Partial Ratio score etween the two given text
+        
+Function to calculate the ratio of the most similar substring as a number between 0 and 100.
+The Partial Ratio allows substring matching. It takes the shorter string and matching it with all possible substrings of the same length. It gives a match if the first string is present as a sub string within second string.
+ 
+##### Token Sort Ratio
+
     tokenSortRatio(t1, t2)
         :param t1: Text string 1
         :param t2: Text String 2
         :return: Returns the Token Sort Ratio score between the two given text
         
-Function to calculate the ratio of??????????????????????????
+The Token Sort Ratio allows tokenizing of strings, ignore case and punctuations. It sorts both the strings and then performs a simple ratio on them. 
+ 
+##### Token Set Ratio
+
+    partialTokenSortRatio(t1, t2)
+        :param t1: Text string 1
+        :param t2: Text String 2
+        :return: Returns the Partial Token Sort Ratio score between the two given text
         
-Example : "" and "" returns a score of :
+
+The Token Set Ratio is similar to the Token Sort Ratio except that it takes out common token away before calculating the ratio. 
+
+##### Other Ratios
+
+     qRatio(t1, t2)
+        :param t1: Text string 1
+        :param t2: Text String 2
+        :return: Returns the Q Ratio score between the two given text
+
     
     wRatio(t1, t2)
         :param t1: Text string 1
         :param t2: Text String 2
         :return: Returns the W Ratio score between the two given text
-        
-Function to calculate the ratio of??????????????????????????
-        
-Example : "" and "" returns a score of :
+
 
 ### pdfParser
 

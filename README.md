@@ -48,6 +48,10 @@ html_5 = diffReport("file_path_a","file_path_b",partial_ratio = "tokenSetRatio")
 html_6 = diffReport("file_path_a","file_path_b",partial_ratio = "partialTokenSortRatio")
 
 ```
+Sample output
+
+![mark_red.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/SampleOp.png)
+
 ## Modules
 ### diffReport
 

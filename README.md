@@ -13,9 +13,9 @@ pip install diffReport
 
 The package dependencies are:
 
- Pandas
- PDFMiner
- FuzzyWuzzy
+- Pandas
+- PDFMiner
+- FuzzyWuzzy
 
 Python-Levenshtein is an optional library that can greatly improve the performance of the tool. Native python sequence matcher can perform the tasks as well, but including Python-Levenshtein can increase the sequence matching speeds by 10x to 30x
 

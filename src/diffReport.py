@@ -132,6 +132,6 @@ def html_output(df, path_file_output):
 
 
 if __name__ == '__main__':
-    x = diffReport("Example/Input/SampleContract1.pdf", "Example/Input/SampleContract2.pdf", html_return=True)
+    x = diffReport("Example/Input/Default.pdf", "Example/Input/Default2.pdf", html_return=True)
 
     # print(x)

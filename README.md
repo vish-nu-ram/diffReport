@@ -50,7 +50,7 @@ html_6 = diffReport("file_path_a","file_path_b",partial_ratio = "partialTokenSor
 ```
 Sample output
 
-![mark_red.png](https://github.com/vish-nu-ram/diffReport/blob/main/src/Example/Images/SampleOp.png)
+![mark_red.png](https://github.com/vish-nu-ram/diffReport/raw/main/src/Example/Images/SampleOp.png)
 
 ## Modules
 ### diffReport

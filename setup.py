@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setup(
     name='diffReport',
-    version=' 0.0.17',
+    version=' 0.1.1',
     description='File comparison and report differences',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -15,7 +15,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
-        "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+        "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
         "Operating System :: OS Independent",
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

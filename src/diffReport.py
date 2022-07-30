@@ -5,6 +5,8 @@ import fuzzyCompare
 import pandas as pd
 
 
+
+
 def diffReport(path_file_a, path_file_b, path_file_output='', html_return=True, partial_ratio="tokenSortRatio"):
     """
 

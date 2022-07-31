@@ -24,6 +24,6 @@ setup(
         "Topic :: Text Processing :: Markup :: HTML"
     ],
     url="https://github.com/vish-nu-ram/diffReport",
-    author="Vishnuram, Diksha Sharma",
-    author_email="vishnu.ram@hotmail.com, sharma.chinky19@hotmail.com",
+    author="Vishnuram",
+    author_email="vishnu.ram@hotmail.com",
 )

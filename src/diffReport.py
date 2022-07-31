@@ -13,7 +13,7 @@ def diffReport(path_file_a, path_file_b, path_file_output='', html_return=True, 
     :param path_file_output: Path of the directory where the output HTML file needs to be saved. (Default: 'Output/')
     :param html_return: Boolean to select if the function returns HTML of the report. (True by default)
     :param partial_ratio: Partial Ratio Type, Accepted Values are ("Ratio", "qRatio", "wRatio", "ratio_2", "tokenSetRatio", "tokenSortRatio", "partialTokenSortRatio", "default")
-    :param exlude_analytics: List of character or strings to exclude from the pdf during analysis.
+    :param exlude_analytics: List of character or sub-strings to exclude from the pdf during analysis.
     :return: HTML for the report if html_return is set to True.  If set to false, it will return the DataFrame.
 
     Function takes two PDF file paths as input, and generates a difference report with the lines that are different

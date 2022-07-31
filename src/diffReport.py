@@ -5,7 +5,6 @@ import fuzzyCompare
 import pandas as pd
 
 
-
 def diffReport(path_file_a, path_file_b, path_file_output='', html_return=True, partial_ratio="tokenSortRatio", exlude_analytics = [] ):
     """
 
@@ -44,8 +43,13 @@ def diffReport(path_file_a, path_file_b, path_file_output='', html_return=True, 
 
     junk = ['', ' ', '   ', '\t', '                                                                                                                 ']
     junk = junk + exlude_analytics
+
     text_lines_a = [x for x in text_lines_a if x not in junk]
     text_lines_b = [x for x in text_lines_b if x not in junk]
+    for exclusion in exlude_analytics:
+        text_lines_a = [x.replace(exclusion,'') for x in text_lines_a]
+        text_lines_b = [x.replace(exclusion, '') for x in text_lines_b]
+
 
     df = pd.DataFrame(columns=['File1', 'File2', 'Ratio', 'Partial Ratio'])
     count = 0
@@ -135,6 +139,6 @@ def html_output(df, path_file_output):
 
 
 if __name__ == '__main__':
-    x = diffReport("Example/Input/Default.pdf", "Example/Input/Default2.pdf", html_return=True)
+    x = diffReport("Example/Input/Default.pdf", "Example/Input/Default2.pdf", html_return=True, exlude_analytics=['to','with','function','changes'])
 
     # print(x)

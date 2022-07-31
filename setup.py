@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setup(
     name='diffReport',
-    version=' 0.1.1',
+    version=' 0.1.2',
     description='File comparison and report differences',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -24,6 +24,6 @@ setup(
         "Topic :: Text Processing :: Markup :: HTML"
     ],
     url="https://github.com/vish-nu-ram/diffReport",
-    author="Vishnuram",
-    author_email="vishnu.ram@hotmail.com",
+    author="Vishnuram, Diksha Sharma",
+    author_email="vishnu.ram@hotmail.com, sharma.chinky19@hotmail.com",
 )
